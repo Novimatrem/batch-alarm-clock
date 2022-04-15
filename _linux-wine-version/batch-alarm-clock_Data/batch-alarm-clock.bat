@@ -509,7 +509,7 @@ echo ...
 
 REM act at alarm time
 
-if %timeforalarmfinal%==" 9" goto foxartdevtest
+if %timeforalarmfinal%=="09" goto foxartdevtest
 REM /act at alarm time
 
 goto updateroom
