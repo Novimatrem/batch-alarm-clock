@@ -41,7 +41,7 @@ cls
 
 REM Change version number when you update the game at all, used in lots of
 REM places but you only have to change it here due to the power of variables.
-SET VERSION=1
+SET VERSION=2
 SET DEVSTAGE=alarm v
 
 REM Combine the above two into vars 'fullverinfo' for easier usage later.
@@ -472,7 +472,8 @@ copy /y NUL .\logs\log.txt >NUL
 cls
 echo f | xcopy log.txt .\logs\log.txt /S /Y /D /Y
 cls
-
+cd batch-alarm-clock_Data
+cd sfx
 cls
 echo -----------
 echo It is
@@ -480,6 +481,13 @@ date /t
 echo at
 time /t
 echo -----------
+echo.
+echo Working dir:
+echo %cd%
+echo.
+echo If the above path is not (...)\batch-alarm-clock\batch-alarm-clock_Data\sfx
+echo then you need to set the "start in" in Task Scheduler to that folder, next to where you picked the .bat file.
+echo.
 echo The alarm will sound at: 09:00 AM
 echo.
 echo Waiting
@@ -981,16 +989,26 @@ goto updateroom
 set MENUINIT==1
 set FIRST==0
 cls
+
+echo.
+echo Working dir:
+echo %cd%
+echo.
+echo If the above path is not (...)\batch-alarm-clock\batch-alarm-clock_Data\sfx
+echo then you need to set the "start in" in Task Scheduler to that folder, next to where you picked the .bat file.
+echo.
+
 echo Wake up. Wake up.
 echo.
 echo Alarm music will play in full. Mute your volume until it ends,
 echo or close this script and kill sounder.exe through task manager.
 echo.
-.\depends\sounder.exe .\sfx\fly.wav
+sounder.exe fly.wav
+REM .\depends\sounder.exe .\sfx\fly.wav
 
-echo To exit,
-pause
+echo exit,
 
+exit
 goto eof
 goto updateroom
 
