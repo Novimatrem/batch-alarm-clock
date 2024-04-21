@@ -41,7 +41,7 @@ cls
 
 REM Change version number when you update the game at all, used in lots of
 REM places but you only have to change it here due to the power of variables.
-SET VERSION=3
+SET VERSION=4
 SET DEVSTAGE=alarm v
 
 REM Combine the above two into vars 'fullverinfo' for easier usage later.
@@ -497,6 +497,8 @@ echo Sound dir: %cd%
 echo [not (...)\sfx? set 'start in' correctly in Task Scheduler...]
 echo.
 time /t
+echo.
+echo Waiting until 8:30 AM...
 REM echo debug counter: %turncounter%
 
 REM timing
@@ -553,7 +555,7 @@ cls
 
 REM act at alarm time
 
-if %timeforalarmfinal%==" 9" goto foxartdevtest
+if %timeforalarmfinal%==" 8" goto foxartdevtest
 REM /act at alarm time
 
 goto updateroom
@@ -1012,6 +1014,11 @@ goto updateroom
 
 
 :foxartdevtest
+cls
+echo It's 8:00 AM...
+echo.
+echo Waiting until 8:30 AM...
+timeout /t 1800 >NUL
 set MENUINIT==1
 set FIRST==0
 cls
@@ -1023,7 +1030,7 @@ echo.
 echo If the above path is not (...)\batch-alarm-clock\batch-alarm-clock_Data\sfx
 echo then you need to set the "start in" in Task Scheduler to that folder, next to where you picked the .bat file.
 echo.
-
+cls
 echo Wake up. Wake up.
 echo.
 echo Alarm music will play in full. Mute your volume until it ends,
