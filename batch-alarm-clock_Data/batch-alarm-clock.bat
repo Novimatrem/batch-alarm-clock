@@ -41,7 +41,7 @@ cls
 
 REM Change version number when you update the game at all, used in lots of
 REM places but you only have to change it here due to the power of variables.
-SET VERSION=2
+SET VERSION=3
 SET DEVSTAGE=alarm v
 
 REM Combine the above two into vars 'fullverinfo' for easier usage later.
@@ -256,11 +256,11 @@ REM default turn is 1, turns to jump each updateroom is also always 1.
 setlocal enabledelayedexpansion
 
 :updateroom
-echo [TURNCOUNTER] back to updateroom >> .\logs\log.txt
+echo [TURNCOUNTER] back to updateroom >> ..\logs\log.txt
 set renderweightdisplay=0
 
 
-echo [TURNCOUNTER] TURNCOUNTER is %turncounter% >> .\logs\log.txt
+echo [TURNCOUNTER] TURNCOUNTER is %turncounter% >> ..\logs\log.txt
 
 
 
@@ -417,10 +417,10 @@ REM /NEVER DO ANYTHING ON TURN 1 THOUGH, OR IT CAUSES A TEXT ISSUE../
 
 REM Log user query for help fixing bugs.
 REM only works in certain cases, we get query directly too sometimes elsewhere.
-echo [USR_DID] "%query%" >> .\logs\log.txt
+echo [USR_DID] "%query%" >> ..\logs\log.txt
 
 REM Log the user's weight as a curiosity
-echo [WEIGHT] weight is "%weight%" lbs >> .\logs\log.txt
+echo [WEIGHT] weight is "%weight%" lbs >> ..\logs\log.txt
 
 
 REM room descriptions based on the current room ID, goto me when room changes
@@ -468,12 +468,13 @@ REM ENTIRE ALARM CLOCK LOGIC START
 :firstdesc
 REM clear log so we don't fill the disk
 cls
-copy /y NUL .\logs\log.txt >NUL
+copy /y NUL ..\logs\log.txt >NUL
 cls
-echo f | xcopy log.txt .\logs\log.txt /S /Y /D /Y
+echo f | robocopy ..\log.txt ..\logs\log.txt /S /Y /D >NUL
 cls
 cd batch-alarm-clock_Data
 cd sfx
+cls
 cls
 echo -----------
 echo It is
@@ -490,7 +491,12 @@ echo then you need to set the "start in" in Task Scheduler to that folder, next 
 echo.
 echo The alarm will sound at: 09:00 AM
 echo.
-echo Waiting
+cls
+cls
+echo Sound dir: %cd%
+echo [not (...)\sfx? set 'start in' correctly in Task Scheduler...]
+echo.
+time /t
 REM echo debug counter: %turncounter%
 
 REM timing
@@ -505,8 +511,27 @@ PING localhost -n 1 >NUL
 PING localhost -n 1 >NUL
 PING localhost -n 1 >NUL
 PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+cls
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+PING localhost -n 1 >NUL
+cls
 rem /timing
-
+cls
 rem GET TIME
 set timeforalarm=%time%
 REM /GET TIME
@@ -523,7 +548,8 @@ set timeforalarmfinal="%timeforalarmfixed%"
 REM echo tfa final %timeforalarmfinal%
 
 REM activity showing.
-echo ...
+REM echo ...
+cls
 
 REM act at alarm time
 
