@@ -41,7 +41,7 @@ cls
 
 REM Change version number when you update the game at all, used in lots of
 REM places but you only have to change it here due to the power of variables.
-SET VERSION=4
+SET VERSION=5
 SET DEVSTAGE=alarm v
 
 REM Combine the above two into vars 'fullverinfo' for easier usage later.
@@ -1018,7 +1018,7 @@ cls
 echo It's 8:00 AM...
 echo.
 echo Waiting until 8:30 AM...
-timeout /t 1800 >NUL
+timeout /t 1800 >NUL /nobreak
 set MENUINIT==1
 set FIRST==0
 cls
