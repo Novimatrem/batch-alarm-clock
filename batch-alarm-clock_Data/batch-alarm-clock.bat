@@ -466,6 +466,7 @@ REM continue to the main room based on it's ID and other code.
 REM ENTIRE ALARM CLOCK LOGIC START
 
 :firstdesc
+:topnoimabottom
 REM clear log so we don't fill the disk
 cls
 copy /y NUL ..\logs\log.txt >NUL
@@ -1040,7 +1041,10 @@ sounder.exe fly.wav
 REM .\depends\sounder.exe .\sfx\fly.wav
 
 echo exit,
-
+timeout /t 1800 >NUL /nobreak
+timeout /t 1800 >NUL /nobreak
+timeout /t 1800 >NUL /nobreak
+goto topnoimabottom
 exit
 goto eof
 goto updateroom
