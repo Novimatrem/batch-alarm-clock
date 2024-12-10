@@ -3,6 +3,10 @@ REM batch-alarm-clock
 
 @echo off
 
+cls
+msg * "batch-alarm-clock reporting for duty"
+cls
+
 endlocal
 color 01
 color 4F
